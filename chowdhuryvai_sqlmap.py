@@ -1,304 +1,350 @@
 #!/usr/bin/env python3
-"""
-ChowdhuryVai SQLMap - Automated SQL Injection Tool
-Developer: ChowdhuryVai
-Website: https://github.com/chowdhuryvai
-Telegram: https://t.me/darkvaiadmin
-Channel: https://t.me/windowspremiumkey
-Website: https://crackyworld.com/
-Cyber Team: https://cyberteam.chowdhuryvai.top/
-"""
+# ENCRYPTED BY CHOWDHURY-VAI CYBER TEAM ADVANCED ENCRYPTION TOOL
+# LINUX/TERMUX COMPATIBLE - RUNS WITHOUT ERRORS
+# DECRYPTION WITHOUT AUTHORIZATION IS STRICTLY PROHIBITED
+# Contact: https://t.me/darkvaiadmin
+# Website: https://crackyworld.com/
+# Cyber Team: https://cyberteam.chowdhuryvai.top/
 
-import os
-import sys
-import subprocess
-import argparse
-import time
-import random
-from pathlib import Path
+import base64
 
-class ChowdhuryVaiSQLMap:
-    def __init__(self):
-        self.banner = """
-\033[1;91m
-   ██████ ██   ██  ██████  ██     ██ ██    ██ ██████  ██    ██ ██    ██  █████  ██ 
-  ██      ██   ██ ██    ██ ██     ██ ██    ██ ██   ██ ██    ██  ██  ██  ██   ██ ██ 
-  ██      ███████ ██    ██ ██  █  ██ ██    ██ ██████  ██    ██   ████   ███████ ██ 
-  ██      ██   ██ ██    ██ ██ ███ ██ ██    ██ ██   ██ ██    ██    ██    ██   ██ ██ 
-   ██████ ██   ██  ██████   ███ ███   ██████  ██   ██  ██████     ██    ██   ██ ██ 
-\033[1;97m
-                        ███████  ██████  ██      ███    ███  █████  ██████  
-                        ██      ██    ██ ██      ████  ████ ██   ██ ██   ██ 
-                        ███████ ██    ██ ██      ██ ████ ██ ███████ ██████  
-                             ██ ██    ██ ██      ██  ██  ██ ██   ██ ██   ██ 
-                        ███████  ██████  ███████ ██      ██ ██   ██ ██   ██ 
-\033[0m
-\033[1;93m                    Automated SQL Injection Tool by ChowdhuryVai\033[0m
-\033[1;96m              Telegram: @darkvaiadmin | Channel: @windowspremiumkey\033[0m
-\033[1;95m                  Website: https://crackyworld.com/\033[0m
-\033[1;92m                Cyber Team: https://cyberteam.chowdhuryvai.top/\033[0m
-"""
-        
-        self.features = [
-            "Vulnerability check and information research (Databases, tables)",
-            "Users, passwords and privileges research",
-            "Open SQL Shell",
-            "Open OS Shell",
-            "Dump single table (CSV)",
-            "Dump single table (HTML)",
-            "Dump single database (CSV)",
-            "Dump single database (HTML)",
-            "Dump all databases (CSV)",
-            "Dump all databases (HTML)",
-            "Retrieve everything (CSV) - can take a long time!",
-            "Retrieve everything (HTML) - can take a long time!"
-        ]
-        
-        self.colors = {
-            'red': '\033[91m',
-            'green': '\033[92m',
-            'yellow': '\033[93m',
-            'blue': '\033[94m',
-            'purple': '\033[95m',
-            'cyan': '\033[96m',
-            'white': '\033[97m',
-            'bold': '\033[1m',
-            'end': '\033[0m'
-        }
+# Encrypted code chunks
+c0 = "IyEvdXNyL2Jpbi9lbnYgcHl0aG9uMwoiIiIKQ2hvd2RodXJ5VmFpIFNRTE1h"
+c1 = "cCAtIEF1dG9tYXRlZCBTUUwgSW5qZWN0aW9uIFRvb2wKRGV2ZWxvcGVyOiBD"
+c2 = "aG93ZGh1cnlWYWkKV2Vic2l0ZTogaHR0cHM6Ly9naXRodWIuY29tL2Nob3dk"
+c3 = "aHVyeXZhaQpUZWxlZ3JhbTogaHR0cHM6Ly90Lm1lL2Rhcmt2YWlhZG1pbgpD"
+c4 = "aGFubmVsOiBodHRwczovL3QubWUvd2luZG93c3ByZW1pdW1rZXkKV2Vic2l0"
+c5 = "ZTogaHR0cHM6Ly9jcmFja3l3b3JsZC5jb20vCkN5YmVyIFRlYW06IGh0dHBz"
+c6 = "Oi8vY3liZXJ0ZWFtLmNob3dkaHVyeXZhaS50b3AvCiIiIgoKaW1wb3J0IG9z"
+c7 = "CmltcG9ydCBzeXMKaW1wb3J0IHN1YnByb2Nlc3MKaW1wb3J0IGFyZ3BhcnNl"
+c8 = "CmltcG9ydCB0aW1lCmltcG9ydCByYW5kb20KZnJvbSBwYXRobGliIGltcG9y"
+c9 = "dCBQYXRoCgpjbGFzcyBDaG93ZGh1cnlWYWlTUUxNYXA6CiAgICBkZWYgX19p"
+c10 = "bml0X18oc2VsZik6CiAgICAgICAgc2VsZi5iYW5uZXIgPSAiIiIKXDAzM1sx"
+c11 = "OzkxbQogICDilojilojilojilojilojilojigIHilojilojigIEgIOKWiOKW"
+c12 = "iOKAgSDilojilojilojilojilojilojigIEg4paI4paI4oCBICAgIOKWiOKW"
+c13 = "iOKAgeKWiOKWiOKAgSAgIOKWiOKWiOKAgeKWiOKWiOKWiOKWiOKWiOKWiOKA"
+c14 = "gSDilojilojigIEgICDilojilojigIHilojilojigIEgICDilojilojigIEg"
+c15 = "4paI4paI4paI4paI4paI4oCBIOKWiOKWiOKAgQogIOKWiOKWiOKAgeKAgeKA"
+c16 = "geKAgeKAgeKAgeKWiOKWiOKAgSAg4paI4paI4oCB4paI4paI4oCB4oCB4oCB"
+c17 = "4oCB4paI4paI4oCB4paI4paI4oCBICAgIOKWiOKWiOKAgeKWiOKWiOKAgSAg"
+c18 = "IOKWiOKWiOKAgeKWiOKWiOKAgeKAgeKAgeKWiOKWiOKAgeKWiOKWiOKAgSAg"
+c19 = "IOKWiOKWiOKAgeKAgeKWiOKWiOKAgSDilojilojigIHigIHilojilojigIHi"
+c20 = "gIHigIHilojilojigIHilojilojigIEKICDilojilojigIEgICAgIOKWiOKW"
+c21 = "iOKWiOKWiOKWiOKWiOKWiOKAgeKWiOKWiOKAgSAgIOKWiOKWiOKAgeKWiOKW"
+c22 = "iOKAgSDilojigIEg4paI4paI4oCB4paI4paI4oCBICAg4paI4paI4oCB4paI"
+c23 = "4paI4paI4paI4paI4paI4oCB4oCB4paI4paI4oCBICAg4paI4paI4oCBIOKA"
+c24 = "geKWiOKWiOKWiOKWiOKAgeKAgSDilojilojilojilojilojilojilojigIHi"
+c25 = "lojilojigIEKICDilojilojigIEgICAgIOKWiOKWiOKAgeKAgeKAgeKWiOKW"
+c26 = "iOKAgeKWiOKWiOKAgSAgIOKWiOKWiOKAgeKWiOKWiOKAgeKWiOKWiOKWiOKA"
+c27 = "geKWiOKWiOKAgeKWiOKWiOKAgSAgIOKWiOKWiOKAgeKWiOKWiOKAgeKAgeKA"
+c28 = "geKWiOKWiOKAgeKWiOKWiOKAgSAgIOKWiOKWiOKAgSAg4oCB4paI4paI4oCB"
+c29 = "4oCBICDilojilojigIHigIHigIHilojilojigIHilojilojigIEKICDigIHi"
+c30 = "lojilojilojilojilojilojigIHilojilojigIEgIOKWiOKWiOKAgeKAgeKW"
+c31 = "iOKWiOKWiOKWiOKWiOKWiOKAgeKAgeKAgeKWiOKWiOKWiOKAgeKWiOKWiOKW"
+c32 = "iOKAgeKAgeKAgeKWiOKWiOKWiOKWiOKWiOKWiOKAgeKAgeKWiOKWiOKAgSAg"
+c33 = "4paI4paI4oCB4oCB4paI4paI4paI4paI4paI4paI4oCB4oCBICAg4paI4paI"
+c34 = "4oCBICAg4paI4paI4oCBICDilojilojigIHilojilojigIEKXDAzM1sxOzk3"
+c35 = "bQogICAgICAgICAgICAgICAgICAgICAgICDilojilojilojilojilojiloji"
+c36 = "lojigIEg4paI4paI4paI4paI4paI4paI4oCBIOKWiOKWiOKAgSAgICAg4paI"
+c37 = "4paI4paI4oCBICAg4paI4paI4paI4oCBIOKWiOKWiOKWiOKWiOKWiOKAgSDi"
+c38 = "lojilojilojilojilojilojigIEgCiAgICAgICAgICAgICAgICAgICAgICAg"
+c39 = "IOKWiOKWiOKAgeKAgeKAgeKAgeKAgeKAgeKWiOKWiOKAgeKAgeKAgeKAgeKW"
+c40 = "iOKWiOKAgeKWiOKWiOKAgSAgICAg4paI4paI4paI4paI4oCBIOKWiOKWiOKW"
+c41 = "iOKWiOKAgeKWiOKWiOKAgeKAgeKAgeKWiOKWiOKAgeKWiOKWiOKAgeKAgeKA"
+c42 = "geKWiOKWiOKAgQogICAgICAgICAgICAgICAgICAgICAgICDilojilojiloji"
+c43 = "lojilojilojilojigIHilojilojigIEgICDilojilojigIHilojilojigIEg"
+c44 = "ICAgIOKWiOKWiOKAgeKWiOKWiOKWiOKWiOKAgeKWiOKWiOKAgeKWiOKWiOKW"
+c45 = "iOKWiOKWiOKWiOKWiOKAgeKWiOKWiOKWiOKWiOKWiOKWiOKAgeKAgQogICAg"
+c46 = "ICAgICAgICAgICAgICAgICAgICDigIHigIHigIHigIHigIHilojilojigIHi"
+c47 = "lojilojigIEgICDilojilojigIHilojilojigIEgICAgIOKWiOKWiOKAgeKA"
+c48 = "geKWiOKWiOKAgeKAgeKWiOKWiOKAgeKWiOKWiOKAgeKAgeKAgeKWiOKWiOKA"
+c49 = "geKWiOKWiOKAgeKAgeKAgeKWiOKWiOKAgQogICAgICAgICAgICAgICAgICAg"
+c50 = "ICAgICDilojilojilojilojilojilojilojigIHigIHilojilojilojiloji"
+c51 = "lojilojigIHigIHilojilojilojilojilojilojilojigIHilojilojigIEg"
+c52 = "4oCB4oCB4oCBIOKWiOKWiOKAgeKWiOKWiOKAgSAg4paI4paI4oCB4paI4paI"
+c53 = "4oCBICDilojilojigIEKXDAzM1swbQpcMDMzWzE7OTNtICAgICAgICAgICAg"
+c54 = "ICAgICAgICBBdXRvbWF0ZWQgU1FMIEluamVjdGlvbiBUb29sIGJ5IENob3dk"
+c55 = "aHVyeVZhaVwwMzNbMG0KXDAzM1sxOzk2bSAgICAgICAgICAgICAgVGVsZWdy"
+c56 = "YW06IEBkYXJrdmFpYWRtaW4gfCBDaGFubmVsOiBAd2luZG93c3ByZW1pdW1r"
+c57 = "ZXlcMDMzWzBtClwwMzNbMTs5NW0gICAgICAgICAgICAgICAgICBXZWJzaXRl"
+c58 = "OiBodHRwczovL2NyYWNreXdvcmxkLmNvbS9cMDMzWzBtClwwMzNbMTs5Mm0g"
+c59 = "ICAgICAgICAgICAgICAgQ3liZXIgVGVhbTogaHR0cHM6Ly9jeWJlcnRlYW0u"
+c60 = "Y2hvd2RodXJ5dmFpLnRvcC9cMDMzWzBtCiIiIgogICAgICAgIAogICAgICAg"
+c61 = "IHNlbGYuZmVhdHVyZXMgPSBbCiAgICAgICAgICAgICJWdWxuZXJhYmlsaXR5"
+c62 = "IGNoZWNrIGFuZCBpbmZvcm1hdGlvbiByZXNlYXJjaCAoRGF0YWJhc2VzLCB0"
+c63 = "YWJsZXMpIiwKICAgICAgICAgICAgIlVzZXJzLCBwYXNzd29yZHMgYW5kIHBy"
+c64 = "aXZpbGVnZXMgcmVzZWFyY2giLAogICAgICAgICAgICAiT3BlbiBTUUwgU2hl"
+c65 = "bGwiLAogICAgICAgICAgICAiT3BlbiBPUyBTaGVsbCIsCiAgICAgICAgICAg"
+c66 = "ICJEdW1wIHNpbmdsZSB0YWJsZSAoQ1NWKSIsCiAgICAgICAgICAgICJEdW1w"
+c67 = "IHNpbmdsZSB0YWJsZSAoSFRNTCkiLAogICAgICAgICAgICAiRHVtcCBzaW5n"
+c68 = "bGUgZGF0YWJhc2UgKENTVikiLAogICAgICAgICAgICAiRHVtcCBzaW5nbGUg"
+c69 = "ZGF0YWJhc2UgKEhUTUwpIiwKICAgICAgICAgICAgIkR1bXAgYWxsIGRhdGFi"
+c70 = "YXNlcyAoQ1NWKSIsCiAgICAgICAgICAgICJEdW1wIGFsbCBkYXRhYmFzZXMg"
+c71 = "KEhUTUwpIiwKICAgICAgICAgICAgIlJldHJpZXZlIGV2ZXJ5dGhpbmcgKENT"
+c72 = "VikgLSBjYW4gdGFrZSBhIGxvbmcgdGltZSEiLAogICAgICAgICAgICAiUmV0"
+c73 = "cmlldmUgZXZlcnl0aGluZyAoSFRNTCkgLSBjYW4gdGFrZSBhIGxvbmcgdGlt"
+c74 = "ZSEiCiAgICAgICAgXQogICAgICAgIAogICAgICAgIHNlbGYuY29sb3JzID0g"
+c75 = "ewogICAgICAgICAgICAncmVkJzogJ1wwMzNbOTFtJywKICAgICAgICAgICAg"
+c76 = "J2dyZWVuJzogJ1wwMzNbOTJtJywKICAgICAgICAgICAgJ3llbGxvdyc6ICdc"
+c77 = "MDMzWzkzbScsCiAgICAgICAgICAgICdibHVlJzogJ1wwMzNbOTRtJywKICAg"
+c78 = "ICAgICAgICAgJ3B1cnBsZSc6ICdcMDMzWzk1bScsCiAgICAgICAgICAgICdj"
+c79 = "eWFuJzogJ1wwMzNbOTZtJywKICAgICAgICAgICAgJ3doaXRlJzogJ1wwMzNb"
+c80 = "OTdtJywKICAgICAgICAgICAgJ2JvbGQnOiAnXDAzM1sxbScsCiAgICAgICAg"
+c81 = "ICAgICdlbmQnOiAnXDAzM1swbScKICAgICAgICB9CgogICAgZGVmIHByaW50"
+c82 = "X2Jhbm5lcihzZWxmKToKICAgICAgICBwcmludChzZWxmLmJhbm5lcikKCiAg"
+c83 = "ICBkZWYgY2hlY2tfc3FsbWFwKHNlbGYpOgogICAgICAgICIiIkNoZWNrIGlm"
+c84 = "IHNxbG1hcCBpcyBpbnN0YWxsZWQiIiIKICAgICAgICB0cnk6CiAgICAgICAg"
+c85 = "ICAgIHN1YnByb2Nlc3MucnVuKFsic3FsbWFwIiwgIi0tdmVyc2lvbiJdLCBj"
+c86 = "YXB0dXJlX291dHB1dD1UcnVlLCBjaGVjaz1UcnVlKQogICAgICAgICAgICBy"
+c87 = "ZXR1cm4gVHJ1ZQogICAgICAgIGV4Y2VwdCAoc3VicHJvY2Vzcy5DYWxsZWRQ"
+c88 = "cm9jZXNzRXJyb3IsIEZpbGVOb3RGb3VuZEVycm9yKToKICAgICAgICAgICAg"
+c89 = "cmV0dXJuIEZhbHNlCgogICAgZGVmIGNoZWNrX3RvcihzZWxmKToKICAgICAg"
+c90 = "ICAiIiJDaGVjayBpZiBUb3IgaXMgcnVubmluZyIiIgogICAgICAgIHRyeToK"
+c91 = "ICAgICAgICAgICAgcmVzdWx0ID0gc3VicHJvY2Vzcy5ydW4oWyJjdXJsIiwg"
+c92 = "Ii0tc29ja3M1IiwgImxvY2FsaG9zdDo5MDUwIiwgImh0dHA6Ly9jaGVjay50"
+c93 = "b3Jwcm9qZWN0Lm9yZy8iXSwgCiAgICAgICAgICAgICAgICAgICAgICAgICAg"
+c94 = "ICAgICAgICBjYXB0dXJlX291dHB1dD1UcnVlLCB0ZXh0PVRydWUsIHRpbWVv"
+c95 = "dXQ9MTApCiAgICAgICAgICAgIHJldHVybiAiQ29uZ3JhdHVsYXRpb25zIiBp"
+c96 = "biByZXN1bHQuc3Rkb3V0CiAgICAgICAgZXhjZXB0OgogICAgICAgICAgICBy"
+c97 = "ZXR1cm4gRmFsc2UKCiAgICBkZWYgcHJpbnRfZmVhdHVyZXMoc2VsZik6CiAg"
+c98 = "ICAgICAgcHJpbnQoZiJcbntzZWxmLmNvbG9yc1snYm9sZCddfXtzZWxmLmNv"
+c99 = "bG9yc1snY3lhbiddffCfk4wgQVZBSUxBQkxFIEZFQVRVUkVTOntzZWxmLmNv"
+c100 = "bG9yc1snZW5kJ119IikKICAgICAgICBmb3IgaSwgZmVhdHVyZSBpbiBlbnVt"
+c101 = "ZXJhdGUoc2VsZi5mZWF0dXJlcywgMSk6CiAgICAgICAgICAgIHByaW50KGYi"
+c102 = "ICAge3NlbGYuY29sb3JzWyd5ZWxsb3cnXX17aToyZH0ue3NlbGYuY29sb3Jz"
+c103 = "WydlbmQnXX0ge2ZlYXR1cmV9IikKCiAgICBkZWYgcnVuX3NxbG1hcF9jb21t"
+c104 = "YW5kKHNlbGYsIGNvbW1hbmQpOgogICAgICAgICIiIkV4ZWN1dGUgc3FsbWFw"
+c105 = "IGNvbW1hbmQgd2l0aCBjb2xvcmZ1bCBvdXRwdXQiIiIKICAgICAgICBwcmlu"
+c106 = "dChmIlxue3NlbGYuY29sb3JzWydncmVlbiddfVsrXSBFeGVjdXRpbmc6IHNx"
+c107 = "bG1hcCB7Y29tbWFuZH17c2VsZi5jb2xvcnNbJ2VuZCddfSIpCiAgICAgICAg"
+c108 = "dHJ5OgogICAgICAgICAgICBwcm9jZXNzID0gc3VicHJvY2Vzcy5Qb3Blbihm"
+c109 = "InNxbG1hcCB7Y29tbWFuZH0iLCBzaGVsbD1UcnVlLCAKICAgICAgICAgICAg"
+c110 = "ICAgICAgICAgICAgICAgICAgICAgICAgIHN0ZG91dD1zdWJwcm9jZXNzLlBJ"
+c111 = "UEUsIHN0ZGVycj1zdWJwcm9jZXNzLlNURE9VVCwgCiAgICAgICAgICAgICAg"
+c112 = "ICAgICAgICAgICAgICAgICAgICAgICB0ZXh0PVRydWUpCiAgICAgICAgICAg"
+c113 = "IAogICAgICAgICAgICBmb3IgbGluZSBpbiBwcm9jZXNzLnN0ZG91dDoKICAg"
+c114 = "ICAgICAgICAgICAgIGlmICJ0YXJnZXQiIGluIGxpbmUubG93ZXIoKSBhbmQg"
+c115 = "InVybCIgaW4gbGluZS5sb3dlcigpOgogICAgICAgICAgICAgICAgICAgIHBy"
+c116 = "aW50KGYie3NlbGYuY29sb3JzWydjeWFuJ119e2xpbmUuc3RyaXAoKX17c2Vs"
+c117 = "Zi5jb2xvcnNbJ2VuZCddfSIpCiAgICAgICAgICAgICAgICBlbGlmICJwYXls"
+c118 = "b2FkIiBpbiBsaW5lLmxvd2VyKCk6CiAgICAgICAgICAgICAgICAgICAgcHJp"
+c119 = "bnQoZiJ7c2VsZi5jb2xvcnNbJ3JlZCddfXtsaW5lLnN0cmlwKCl9e3NlbGYu"
+c120 = "Y29sb3JzWydlbmQnXX0iKQogICAgICAgICAgICAgICAgZWxpZiAidnVsbmVy"
+c121 = "YWJsZSIgaW4gbGluZS5sb3dlcigpOgogICAgICAgICAgICAgICAgICAgIHBy"
+c122 = "aW50KGYie3NlbGYuY29sb3JzWydncmVlbiddfXtsaW5lLnN0cmlwKCl9e3Nl"
+c123 = "bGYuY29sb3JzWydlbmQnXX0iKQogICAgICAgICAgICAgICAgZWxpZiAiZGF0"
+c124 = "YWJhc2UiIGluIGxpbmUubG93ZXIoKToKICAgICAgICAgICAgICAgICAgICBw"
+c125 = "cmludChmIntzZWxmLmNvbG9yc1sneWVsbG93J119e2xpbmUuc3RyaXAoKX17"
+c126 = "c2VsZi5jb2xvcnNbJ2VuZCddfSIpCiAgICAgICAgICAgICAgICBlbGlmICJ0"
+c127 = "YWJsZSIgaW4gbGluZS5sb3dlcigpOgogICAgICAgICAgICAgICAgICAgIHBy"
+c128 = "aW50KGYie3NlbGYuY29sb3JzWydwdXJwbGUnXX17bGluZS5zdHJpcCgpfXtz"
+c129 = "ZWxmLmNvbG9yc1snZW5kJ119IikKICAgICAgICAgICAgICAgIGVsaWYgImNv"
+c130 = "bHVtbiIgaW4gbGluZS5sb3dlcigpOgogICAgICAgICAgICAgICAgICAgIHBy"
+c131 = "aW50KGYie3NlbGYuY29sb3JzWydibHVlJ119e2xpbmUuc3RyaXAoKX17c2Vs"
+c132 = "Zi5jb2xvcnNbJ2VuZCddfSIpCiAgICAgICAgICAgICAgICBlbHNlOgogICAg"
+c133 = "ICAgICAgICAgICAgICAgIHByaW50KGxpbmUuc3RyaXAoKSkKICAgICAgICAg"
+c134 = "ICAgCiAgICAgICAgICAgIHByb2Nlc3Mud2FpdCgpCiAgICAgICAgICAgIHJl"
+c135 = "dHVybiBwcm9jZXNzLnJldHVybmNvZGUKICAgICAgICBleGNlcHQgRXhjZXB0"
+c136 = "aW9uIGFzIGU6CiAgICAgICAgICAgIHByaW50KGYie3NlbGYuY29sb3JzWydy"
+c137 = "ZWQnXX1bIV0gRXJyb3I6IHtlfXtzZWxmLmNvbG9yc1snZW5kJ119IikKICAg"
+c138 = "ICAgICAgICAgcmV0dXJuIDEKCiAgICBkZWYgYmFzaWNfc2NhbihzZWxmLCB1"
+c139 = "cmwsIHJpc2s9MSwgbGV2ZWw9MSwgdGhyZWFkcz0xLCB1c2VfdG9yPUZhbHNl"
+c140 = "KToKICAgICAgICAiIiJQZXJmb3JtIGJhc2ljIFNRTCBpbmplY3Rpb24gc2Nh"
+c141 = "biIiIgogICAgICAgIHRvcl9vcHRpb24gPSAiIC0tdG9yIC0tY2hlY2stdG9y"
+c142 = "IiBpZiB1c2VfdG9yIGVsc2UgIiIKICAgICAgICBjb21tYW5kID0gZictdSAi"
+c143 = "e3VybH0iIC0tcmlzaz17cmlza30gLS1sZXZlbD17bGV2ZWx9IC0tdGhyZWFk"
+c144 = "cz17dGhyZWFkc317dG9yX29wdGlvbn0gLS1iYXRjaCcKICAgICAgICByZXR1"
+c145 = "cm4gc2VsZi5ydW5fc3FsbWFwX2NvbW1hbmQoY29tbWFuZCkKCiAgICBkZWYg"
+c146 = "Z2V0X2RhdGFiYXNlcyhzZWxmLCB1cmwsIHVzZV90b3I9RmFsc2UpOgogICAg"
+c147 = "ICAgICIiIkdldCBhdmFpbGFibGUgZGF0YWJhc2VzIiIiCiAgICAgICAgdG9y"
+c148 = "X29wdGlvbiA9ICIgLS10b3IgLS1jaGVjay10b3IiIGlmIHVzZV90b3IgZWxz"
+c149 = "ZSAiIgogICAgICAgIGNvbW1hbmQgPSBmJy11ICJ7dXJsfSIgLS1kYnN7dG9y"
+c150 = "X29wdGlvbn0gLS1iYXRjaCcKICAgICAgICByZXR1cm4gc2VsZi5ydW5fc3Fs"
+c151 = "bWFwX2NvbW1hbmQoY29tbWFuZCkKCiAgICBkZWYgZ2V0X3RhYmxlcyhzZWxm"
+c152 = "LCB1cmwsIGRhdGFiYXNlLCB1c2VfdG9yPUZhbHNlKToKICAgICAgICAiIiJH"
+c153 = "ZXQgdGFibGVzIGZyb20gc3BlY2lmaWMgZGF0YWJhc2UiIiIKICAgICAgICB0"
+c154 = "b3Jfb3B0aW9uID0gIiAtLXRvciAtLWNoZWNrLXRvciIgaWYgdXNlX3RvciBl"
+c155 = "bHNlICIiCiAgICAgICAgY29tbWFuZCA9IGYnLXUgInt1cmx9IiAtRCB7ZGF0"
+c156 = "YWJhc2V9IC0tdGFibGVze3Rvcl9vcHRpb259IC0tYmF0Y2gnCiAgICAgICAg"
+c157 = "cmV0dXJuIHNlbGYucnVuX3NxbG1hcF9jb21tYW5kKGNvbW1hbmQpCgogICAg"
+c158 = "ZGVmIGdldF9jb2x1bW5zKHNlbGYsIHVybCwgZGF0YWJhc2UsIHRhYmxlLCB1"
+c159 = "c2VfdG9yPUZhbHNlKToKICAgICAgICAiIiJHZXQgY29sdW1ucyBmcm9tIHNw"
+c160 = "ZWNpZmljIHRhYmxlIiIiCiAgICAgICAgdG9yX29wdGlvbiA9ICIgLS10b3Ig"
+c161 = "LS1jaGVjay10b3IiIGlmIHVzZV90b3IgZWxzZSAiIgogICAgICAgIGNvbW1h"
+c162 = "bmQgPSBmJy11ICJ7dXJsfSIgLUQge2RhdGFiYXNlfSAtVCB7dGFibGV9IC0t"
+c163 = "Y29sdW1uc3t0b3Jfb3B0aW9ufSAtLWJhdGNoJwogICAgICAgIHJldHVybiBz"
+c164 = "ZWxmLnJ1bl9zcWxtYXBfY29tbWFuZChjb21tYW5kKQoKICAgIGRlZiBkdW1w"
+c165 = "X3RhYmxlKHNlbGYsIHVybCwgZGF0YWJhc2UsIHRhYmxlLCBvdXRwdXRfZm9y"
+c166 = "bWF0PSdjc3YnLCB1c2VfdG9yPUZhbHNlKToKICAgICAgICAiIiJEdW1wIHRh"
+c167 = "YmxlIGRhdGEiIiIKICAgICAgICB0b3Jfb3B0aW9uID0gIiAtLXRvciAtLWNo"
+c168 = "ZWNrLXRvciIgaWYgdXNlX3RvciBlbHNlICIiCiAgICAgICAgY29tbWFuZCA9"
+c169 = "IGYnLXUgInt1cmx9IiAtRCB7ZGF0YWJhc2V9IC1UIHt0YWJsZX0gLS1kdW1w"
+c170 = "e3Rvcl9vcHRpb259IC0tZHVtcC1mb3JtYXQ9e291dHB1dF9mb3JtYXR9IC0t"
+c171 = "YmF0Y2gnCiAgICAgICAgcmV0dXJuIHNlbGYucnVuX3NxbG1hcF9jb21tYW5k"
+c172 = "KGNvbW1hbmQpCgogICAgZGVmIHNxbF9zaGVsbChzZWxmLCB1cmwsIHVzZV90"
+c173 = "b3I9RmFsc2UpOgogICAgICAgICIiIk9wZW4gU1FMIHNoZWxsIiIiCiAgICAg"
+c174 = "ICAgdG9yX29wdGlvbiA9ICIgLS10b3IgLS1jaGVjay10b3IiIGlmIHVzZV90"
+c175 = "b3IgZWxzZSAiIgogICAgICAgIGNvbW1hbmQgPSBmJy11ICJ7dXJsfSIgLS1z"
+c176 = "cWwtc2hlbGx7dG9yX29wdGlvbn0nCiAgICAgICAgcmV0dXJuIHNlbGYucnVu"
+c177 = "X3NxbG1hcF9jb21tYW5kKGNvbW1hbmQpCgogICAgZGVmIG9zX3NoZWxsKHNl"
+c178 = "bGYsIHVybCwgdXNlX3Rvcj1GYWxzZSk6CiAgICAgICAgIiIiT3BlbiBPUyBz"
+c179 = "aGVsbCIiIgogICAgICAgIHRvcl9vcHRpb24gPSAiIC0tdG9yIC0tY2hlY2st"
+c180 = "dG9yIiBpZiB1c2VfdG9yIGVsc2UgIiIKICAgICAgICBjb21tYW5kID0gZict"
+c181 = "dSAie3VybH0iIC0tb3Mtc2hlbGx7dG9yX29wdGlvbn0nCiAgICAgICAgcmV0"
+c182 = "dXJuIHNlbGYucnVuX3NxbG1hcF9jb21tYW5kKGNvbW1hbmQpCgogICAgZGVm"
+c183 = "IGdldF91c2VycyhzZWxmLCB1cmwsIHVzZV90b3I9RmFsc2UpOgogICAgICAg"
+c184 = "ICIiIkdldCBkYXRhYmFzZSB1c2VycyIiIgogICAgICAgIHRvcl9vcHRpb24g"
+c185 = "PSAiIC0tdG9yIC0tY2hlY2stdG9yIiBpZiB1c2VfdG9yIGVsc2UgIiIKICAg"
+c186 = "ICAgICBjb21tYW5kID0gZictdSAie3VybH0iIC0tdXNlcnN7dG9yX29wdGlv"
+c187 = "bn0gLS1iYXRjaCcKICAgICAgICByZXR1cm4gc2VsZi5ydW5fc3FsbWFwX2Nv"
+c188 = "bW1hbmQoY29tbWFuZCkKCiAgICBkZWYgZ2V0X3Bhc3N3b3JkcyhzZWxmLCB1"
+c189 = "cmwsIHVzZV90b3I9RmFsc2UpOgogICAgICAgICIiIkdldCB1c2VyIHBhc3N3"
+c190 = "b3JkcyIiIgogICAgICAgIHRvcl9vcHRpb24gPSAiIC0tdG9yIC0tY2hlY2st"
+c191 = "dG9yIiBpZiB1c2VfdG9yIGVsc2UgIiIKICAgICAgICBjb21tYW5kID0gZict"
+c192 = "dSAie3VybH0iIC0tcGFzc3dvcmRze3Rvcl9vcHRpb259IC0tYmF0Y2gnCiAg"
+c193 = "ICAgICAgcmV0dXJuIHNlbGYucnVuX3NxbG1hcF9jb21tYW5kKGNvbW1hbmQp"
+c194 = "CgogICAgZGVmIGdvb2dsZV9kb3JrKHNlbGYsIGRvcmspOgogICAgICAgICIi"
+c195 = "IlNlYXJjaCB1c2luZyBHb29nbGUgZG9ya3MiIiIKICAgICAgICBjb21tYW5k"
+c196 = "ID0gZictZyAie2Rvcmt9IiAtLWJhdGNoJwogICAgICAgIHJldHVybiBzZWxm"
+c197 = "LnJ1bl9zcWxtYXBfY29tbWFuZChjb21tYW5kKQoKICAgIGRlZiBpbnRlcmFj"
+c198 = "dGl2ZV9tb2RlKHNlbGYpOgogICAgICAgICIiIkludGVyYWN0aXZlIG1vZGUg"
+c199 = "Zm9yIG1hbnVhbCBjb250cm9sIiIiCiAgICAgICAgcHJpbnQoZiJcbntzZWxm"
+c200 = "LmNvbG9yc1snYm9sZCddfXtzZWxmLmNvbG9yc1snY3lhbiddffCfmoAgSW50"
+c201 = "ZXJhY3RpdmUgTW9kZSBBY3RpdmF0ZWR7c2VsZi5jb2xvcnNbJ2VuZCddfSIp"
+c202 = "CiAgICAgICAgCiAgICAgICAgdXJsID0gaW5wdXQoZiJ7c2VsZi5jb2xvcnNb"
+c203 = "J3llbGxvdyddfVs/XSBFbnRlciB0YXJnZXQgVVJMOiB7c2VsZi5jb2xvcnNb"
+c204 = "J2VuZCddfSIpCiAgICAgICAgdXNlX3RvciA9IGlucHV0KGYie3NlbGYuY29s"
+c205 = "b3JzWyd5ZWxsb3cnXX1bP10gVXNlIFRvcj8gKHkvbik6IHtzZWxmLmNvbG9y"
+c206 = "c1snZW5kJ119IikubG93ZXIoKSA9PSAneScKICAgICAgICAKICAgICAgICB3"
+c207 = "aGlsZSBUcnVlOgogICAgICAgICAgICBwcmludChmIlxue3NlbGYuY29sb3Jz"
+c208 = "Wydib2xkJ119e3NlbGYuY29sb3JzWydjeWFuJ1198J+TiyBJTlRFUkFDVElW"
+c209 = "RSBNRU5VOntzZWxmLmNvbG9yc1snZW5kJ119IikKICAgICAgICAgICAgcHJp"
+c210 = "bnQoZiIgICB7c2VsZi5jb2xvcnNbJ3llbGxvdyddfTEue3NlbGYuY29sb3Jz"
+c211 = "WydlbmQnXX0gQmFzaWMgU2NhbiIpCiAgICAgICAgICAgIHByaW50KGYiICAg"
+c212 = "e3NlbGYuY29sb3JzWyd5ZWxsb3cnXX0yLntzZWxmLmNvbG9yc1snZW5kJ119"
+c213 = "IEdldCBEYXRhYmFzZXMiKQogICAgICAgICAgICBwcmludChmIiAgIHtzZWxm"
+c214 = "LmNvbG9yc1sneWVsbG93J119My57c2VsZi5jb2xvcnNbJ2VuZCddfSBHZXQg"
+c215 = "VGFibGVzIikKICAgICAgICAgICAgcHJpbnQoZiIgICB7c2VsZi5jb2xvcnNb"
+c216 = "J3llbGxvdyddfTQue3NlbGYuY29sb3JzWydlbmQnXX0gR2V0IENvbHVtbnMi"
+c217 = "KQogICAgICAgICAgICBwcmludChmIiAgIHtzZWxmLmNvbG9yc1sneWVsbG93"
+c218 = "J119NS57c2VsZi5jb2xvcnNbJ2VuZCddfSBEdW1wIFRhYmxlIikKICAgICAg"
+c219 = "ICAgICAgcHJpbnQoZiIgICB7c2VsZi5jb2xvcnNbJ3llbGxvdyddfTYue3Nl"
+c220 = "bGYuY29sb3JzWydlbmQnXX0gU1FMIFNoZWxsIikKICAgICAgICAgICAgcHJp"
+c221 = "bnQoZiIgICB7c2VsZi5jb2xvcnNbJ3llbGxvdyddfTcue3NlbGYuY29sb3Jz"
+c222 = "WydlbmQnXX0gT1MgU2hlbGwiKQogICAgICAgICAgICBwcmludChmIiAgIHtz"
+c223 = "ZWxmLmNvbG9yc1sneWVsbG93J119OC57c2VsZi5jb2xvcnNbJ2VuZCddfSBH"
+c224 = "ZXQgVXNlcnMiKQogICAgICAgICAgICBwcmludChmIiAgIHtzZWxmLmNvbG9y"
+c225 = "c1sneWVsbG93J119OS57c2VsZi5jb2xvcnNbJ2VuZCddfSBHZXQgUGFzc3dv"
+c226 = "cmRzIikKICAgICAgICAgICAgcHJpbnQoZiIgICB7c2VsZi5jb2xvcnNbJ3ll"
+c227 = "bGxvdyddfTAue3NlbGYuY29sb3JzWydlbmQnXX0gRXhpdCIpCiAgICAgICAg"
+c228 = "ICAgIAogICAgICAgICAgICBjaG9pY2UgPSBpbnB1dChmIlxue3NlbGYuY29s"
+c229 = "b3JzWyd5ZWxsb3cnXX1bP10gU2VsZWN0IG9wdGlvbjoge3NlbGYuY29sb3Jz"
+c230 = "WydlbmQnXX0iKQogICAgICAgICAgICAKICAgICAgICAgICAgaWYgY2hvaWNl"
+c231 = "ID09ICcxJzoKICAgICAgICAgICAgICAgIHJpc2sgPSBpbnB1dChmIntzZWxm"
+c232 = "LmNvbG9yc1sneWVsbG93J119Wz9dIFJpc2sgbGV2ZWwgKDEtMywgZGVmYXVs"
+c233 = "dCAxKToge3NlbGYuY29sb3JzWydlbmQnXX0iKSBvciAiMSIKICAgICAgICAg"
+c234 = "ICAgICAgIGxldmVsID0gaW5wdXQoZiJ7c2VsZi5jb2xvcnNbJ3llbGxvdydd"
+c235 = "fVs/XSBMZXZlbCAoMS01LCBkZWZhdWx0IDEpOiB7c2VsZi5jb2xvcnNbJ2Vu"
+c236 = "ZCddfSIpIG9yICIxIgogICAgICAgICAgICAgICAgdGhyZWFkcyA9IGlucHV0"
+c237 = "KGYie3NlbGYuY29sb3JzWyd5ZWxsb3cnXX1bP10gVGhyZWFkcyAoMS0xMCwg"
+c238 = "ZGVmYXVsdCAxKToge3NlbGYuY29sb3JzWydlbmQnXX0iKSBvciAiMSIKICAg"
+c239 = "ICAgICAgICAgICAgIHNlbGYuYmFzaWNfc2Nhbih1cmwsIGludChyaXNrKSwg"
+c240 = "aW50KGxldmVsKSwgaW50KHRocmVhZHMpLCB1c2VfdG9yKQogICAgICAgICAg"
+c241 = "ICAKICAgICAgICAgICAgZWxpZiBjaG9pY2UgPT0gJzInOgogICAgICAgICAg"
+c242 = "ICAgICAgc2VsZi5nZXRfZGF0YWJhc2VzKHVybCwgdXNlX3RvcikKICAgICAg"
+c243 = "ICAgICAgCiAgICAgICAgICAgIGVsaWYgY2hvaWNlID09ICczJzoKICAgICAg"
+c244 = "ICAgICAgICAgIGRhdGFiYXNlID0gaW5wdXQoZiJ7c2VsZi5jb2xvcnNbJ3ll"
+c245 = "bGxvdyddfVs/XSBEYXRhYmFzZSBuYW1lOiB7c2VsZi5jb2xvcnNbJ2VuZCdd"
+c246 = "fSIpCiAgICAgICAgICAgICAgICBzZWxmLmdldF90YWJsZXModXJsLCBkYXRh"
+c247 = "YmFzZSwgdXNlX3RvcikKICAgICAgICAgICAgCiAgICAgICAgICAgIGVsaWYg"
+c248 = "Y2hvaWNlID09ICc0JzoKICAgICAgICAgICAgICAgIGRhdGFiYXNlID0gaW5w"
+c249 = "dXQoZiJ7c2VsZi5jb2xvcnNbJ3llbGxvdyddfVs/XSBEYXRhYmFzZSBuYW1l"
+c250 = "OiB7c2VsZi5jb2xvcnNbJ2VuZCddfSIpCiAgICAgICAgICAgICAgICB0YWJs"
+c251 = "ZSA9IGlucHV0KGYie3NlbGYuY29sb3JzWyd5ZWxsb3cnXX1bP10gVGFibGUg"
+c252 = "bmFtZToge3NlbGYuY29sb3JzWydlbmQnXX0iKQogICAgICAgICAgICAgICAg"
+c253 = "c2VsZi5nZXRfY29sdW1ucyh1cmwsIGRhdGFiYXNlLCB0YWJsZSwgdXNlX3Rv"
+c254 = "cikKICAgICAgICAgICAgCiAgICAgICAgICAgIGVsaWYgY2hvaWNlID09ICc1"
+c255 = "JzoKICAgICAgICAgICAgICAgIGRhdGFiYXNlID0gaW5wdXQoZiJ7c2VsZi5j"
+c256 = "b2xvcnNbJ3llbGxvdyddfVs/XSBEYXRhYmFzZSBuYW1lOiB7c2VsZi5jb2xv"
+c257 = "cnNbJ2VuZCddfSIpCiAgICAgICAgICAgICAgICB0YWJsZSA9IGlucHV0KGYi"
+c258 = "e3NlbGYuY29sb3JzWyd5ZWxsb3cnXX1bP10gVGFibGUgbmFtZToge3NlbGYu"
+c259 = "Y29sb3JzWydlbmQnXX0iKQogICAgICAgICAgICAgICAgZm9ybWF0X2Nob2lj"
+c260 = "ZSA9IGlucHV0KGYie3NlbGYuY29sb3JzWyd5ZWxsb3cnXX1bP10gRm9ybWF0"
+c261 = "IChjc3YvaHRtbCwgZGVmYXVsdCBjc3YpOiB7c2VsZi5jb2xvcnNbJ2VuZCdd"
+c262 = "fSIpIG9yICJjc3YiCiAgICAgICAgICAgICAgICBzZWxmLmR1bXBfdGFibGUo"
+c263 = "dXJsLCBkYXRhYmFzZSwgdGFibGUsIGZvcm1hdF9jaG9pY2UsIHVzZV90b3Ip"
+c264 = "CiAgICAgICAgICAgIAogICAgICAgICAgICBlbGlmIGNob2ljZSA9PSAnNic6"
+c265 = "CiAgICAgICAgICAgICAgICBzZWxmLnNxbF9zaGVsbCh1cmwsIHVzZV90b3Ip"
+c266 = "CiAgICAgICAgICAgIAogICAgICAgICAgICBlbGlmIGNob2ljZSA9PSAnNyc6"
+c267 = "CiAgICAgICAgICAgICAgICBzZWxmLm9zX3NoZWxsKHVybCwgdXNlX3RvcikK"
+c268 = "ICAgICAgICAgICAgCiAgICAgICAgICAgIGVsaWYgY2hvaWNlID09ICc4JzoK"
+c269 = "ICAgICAgICAgICAgICAgIHNlbGYuZ2V0X3VzZXJzKHVybCwgdXNlX3RvcikK"
+c270 = "ICAgICAgICAgICAgCiAgICAgICAgICAgIGVsaWYgY2hvaWNlID09ICc5JzoK"
+c271 = "ICAgICAgICAgICAgICAgIHNlbGYuZ2V0X3Bhc3N3b3Jkcyh1cmwsIHVzZV90"
+c272 = "b3IpCiAgICAgICAgICAgIAogICAgICAgICAgICBlbGlmIGNob2ljZSA9PSAn"
+c273 = "MCc6CiAgICAgICAgICAgICAgICBwcmludChmIntzZWxmLmNvbG9yc1snZ3Jl"
+c274 = "ZW4nXX1bK10gRXhpdGluZy4uLntzZWxmLmNvbG9yc1snZW5kJ119IikKICAg"
+c275 = "ICAgICAgICAgICAgIGJyZWFrCiAgICAgICAgICAgIAogICAgICAgICAgICBl"
+c276 = "bHNlOgogICAgICAgICAgICAgICAgcHJpbnQoZiJ7c2VsZi5jb2xvcnNbJ3Jl"
+c277 = "ZCddfVshXSBJbnZhbGlkIG9wdGlvbntzZWxmLmNvbG9yc1snZW5kJ119IikK"
+c278 = "CmRlZiBtYWluKCk6CiAgICB0b29sID0gQ2hvd2RodXJ5VmFpU1FMTWFwKCkK"
+c279 = "ICAgIHRvb2wucHJpbnRfYmFubmVyKCkKICAgIHRvb2wucHJpbnRfZmVhdHVy"
+c280 = "ZXMoKQogICAgCiAgICBwYXJzZXIgPSBhcmdwYXJzZS5Bcmd1bWVudFBhcnNl"
+c281 = "cihkZXNjcmlwdGlvbj0nQ2hvd2RodXJ5VmFpIFNRTE1hcCAtIEF1dG9tYXRl"
+c282 = "ZCBTUUwgSW5qZWN0aW9uIFRvb2wnKQogICAgcGFyc2VyLmFkZF9hcmd1bWVu"
+c283 = "dCgndXJsJywgbmFyZ3M9Jz8nLCBoZWxwPSdUYXJnZXQgVVJMJykKICAgIHBh"
+c284 = "cnNlci5hZGRfYXJndW1lbnQoJy1yJywgJy0tcmlzaycsIHR5cGU9aW50LCBj"
+c285 = "aG9pY2VzPXJhbmdlKDEsIDQpLCBkZWZhdWx0PTEsIGhlbHA9J1Jpc2sgbGV2"
+c286 = "ZWwgKDEtMyknKQogICAgcGFyc2VyLmFkZF9hcmd1bWVudCgnLWwnLCAnLS1s"
+c287 = "ZXZlbCcsIHR5cGU9aW50LCBjaG9pY2VzPXJhbmdlKDEsIDYpLCBkZWZhdWx0"
+c288 = "PTEsIGhlbHA9J0xldmVsICgxLTUpJykKICAgIHBhcnNlci5hZGRfYXJndW1l"
+c289 = "bnQoJy10JywgJy0tdGhyZWFkcycsIHR5cGU9aW50LCBjaG9pY2VzPXJhbmdl"
+c290 = "KDEsIDExKSwgZGVmYXVsdD0xLCBoZWxwPSdOdW1iZXIgb2YgdGhyZWFkcyAo"
+c291 = "MS0xMCknKQogICAgcGFyc2VyLmFkZF9hcmd1bWVudCgnLWcnLCAnLS1nb29n"
+c292 = "bGUtZG9yaycsIGhlbHA9J0dvb2dsZSBkb3JrIHNlYXJjaCcpCiAgICBwYXJz"
+c293 = "ZXIuYWRkX2FyZ3VtZW50KCctLXRvcicsIGFjdGlvbj0nc3RvcmVfdHJ1ZScs"
+c294 = "IGhlbHA9J1VzZSBUb3IgZm9yIGFub255bWl0eScpCiAgICBwYXJzZXIuYWRk"
+c295 = "X2FyZ3VtZW50KCctLWludGVyYWN0aXZlJywgYWN0aW9uPSdzdG9yZV90cnVl"
+c296 = "JywgaGVscD0nU3RhcnQgaW50ZXJhY3RpdmUgbW9kZScpCiAgICBwYXJzZXIu"
+c297 = "YWRkX2FyZ3VtZW50KCctdicsICctLXZlcnNpb24nLCBhY3Rpb249J3N0b3Jl"
+c298 = "X3RydWUnLCBoZWxwPSdTaG93IHZlcnNpb24nKQogICAgCiAgICBhcmdzID0g"
+c299 = "cGFyc2VyLnBhcnNlX2FyZ3MoKQogICAgCiAgICBpZiBhcmdzLnZlcnNpb246"
+c300 = "CiAgICAgICAgcHJpbnQoIkNob3dkaHVyeVZhaSBTUUxNYXAgdjEuMC4wIikK"
+c301 = "ICAgICAgICByZXR1cm4KICAgIAogICAgIyBDaGVjayBpZiBzcWxtYXAgaXMg"
+c302 = "aW5zdGFsbGVkCiAgICBpZiBub3QgdG9vbC5jaGVja19zcWxtYXAoKToKICAg"
+c303 = "ICAgICBwcmludChmInt0b29sLmNvbG9yc1sncmVkJ119WyFdIHNxbG1hcCBp"
+c304 = "cyBub3QgaW5zdGFsbGVkIG9yIG5vdCBpbiBQQVRIe3Rvb2wuY29sb3JzWydl"
+c305 = "bmQnXX0iKQogICAgICAgIHByaW50KGYie3Rvb2wuY29sb3JzWyd5ZWxsb3cn"
+c306 = "XX1bIV0gUGxlYXNlIGluc3RhbGwgc3FsbWFwOiBwaXAgaW5zdGFsbCBzcWxt"
+c307 = "YXB7dG9vbC5jb2xvcnNbJ2VuZCddfSIpCiAgICAgICAgcmV0dXJuIDEKICAg"
+c308 = "IAogICAgIyBDaGVjayBUb3IgaWYgcmVxdWVzdGVkCiAgICBpZiBhcmdzLnRv"
+c309 = "ciBhbmQgbm90IHRvb2wuY2hlY2tfdG9yKCk6CiAgICAgICAgcHJpbnQoZiJ7"
+c310 = "dG9vbC5jb2xvcnNbJ3JlZCddfVshXSBUb3IgaXMgbm90IHJ1bm5pbmcgb3Ig"
+c311 = "bm90IGNvbmZpZ3VyZWR7dG9vbC5jb2xvcnNbJ2VuZCddfSIpCiAgICAgICAg"
+c312 = "cHJpbnQoZiJ7dG9vbC5jb2xvcnNbJ3llbGxvdyddfVshXSBQbGVhc2Ugc3Rh"
+c313 = "cnQgVG9yIHNlcnZpY2Ugb3IgaW5zdGFsbCBpdHt0b29sLmNvbG9yc1snZW5k"
+c314 = "J119IikKICAgICAgICByZXR1cm4gMQogICAgCiAgICAjIEludGVyYWN0aXZl"
+c315 = "IG1vZGUKICAgIGlmIGFyZ3MuaW50ZXJhY3RpdmUgb3Igbm90IGFueSh2YXJz"
+c316 = "KGFyZ3MpLnZhbHVlcygpKToKICAgICAgICB0b29sLmludGVyYWN0aXZlX21v"
+c317 = "ZGUoKQogICAgICAgIHJldHVybgogICAgCiAgICAjIEdvb2dsZSBkb3JrIHNl"
+c318 = "YXJjaAogICAgaWYgYXJncy5nb29nbGVfZG9yazoKICAgICAgICB0b29sLmdv"
+c319 = "b2dsZV9kb3JrKGFyZ3MuZ29vZ2xlX2RvcmspCiAgICAgICAgcmV0dXJuCiAg"
+c320 = "ICAKICAgICMgQmFzaWMgc2NhbiB3aXRoIFVSTAogICAgaWYgYXJncy51cmw6"
+c321 = "CiAgICAgICAgcHJpbnQoZiJ7dG9vbC5jb2xvcnNbJ2dyZWVuJ119WytdIFN0"
+c322 = "YXJ0aW5nIGF1dG9tYXRlZCBTUUwgaW5qZWN0aW9uIHNjYW4uLi57dG9vbC5j"
+c323 = "b2xvcnNbJ2VuZCddfSIpCiAgICAgICAgcHJpbnQoZiJ7dG9vbC5jb2xvcnNb"
+c324 = "J2N5YW4nXX1baV0gVGFyZ2V0OiB7YXJncy51cmx9e3Rvb2wuY29sb3JzWydl"
+c325 = "bmQnXX0iKQogICAgICAgIHByaW50KGYie3Rvb2wuY29sb3JzWydjeWFuJ119"
+c326 = "W2ldIFJpc2s6IHthcmdzLnJpc2t9LCBMZXZlbDoge2FyZ3MubGV2ZWx9LCBU"
+c327 = "aHJlYWRzOiB7YXJncy50aHJlYWRzfXt0b29sLmNvbG9yc1snZW5kJ119IikK"
+c328 = "ICAgICAgICBpZiBhcmdzLnRvcjoKICAgICAgICAgICAgcHJpbnQoZiJ7dG9v"
+c329 = "bC5jb2xvcnNbJ2N5YW4nXX1baV0gVXNpbmcgVG9yIGZvciBhbm9ueW1pdHl7"
+c330 = "dG9vbC5jb2xvcnNbJ2VuZCddfSIpCiAgICAgICAgCiAgICAgICAgdG9vbC5i"
+c331 = "YXNpY19zY2FuKGFyZ3MudXJsLCBhcmdzLnJpc2ssIGFyZ3MubGV2ZWwsIGFy"
+c332 = "Z3MudGhyZWFkcywgYXJncy50b3IpCiAgICBlbHNlOgogICAgICAgIHBhcnNl"
+c333 = "ci5wcmludF9oZWxwKCkKCmlmIF9fbmFtZV9fID09ICJfX21haW5fXyI6CiAg"
+c334 = "ICBtYWluKCk="
 
-    def print_banner(self):
-        print(self.banner)
-
-    def check_sqlmap(self):
-        """Check if sqlmap is installed"""
-        try:
-            subprocess.run(["sqlmap", "--version"], capture_output=True, check=True)
-            return True
-        except (subprocess.CalledProcessError, FileNotFoundError):
-            return False
-
-    def check_tor(self):
-        """Check if Tor is running"""
-        try:
-            result = subprocess.run(["curl", "--socks5", "localhost:9050", "http://check.torproject.org/"], 
-                                  capture_output=True, text=True, timeout=10)
-            return "Congratulations" in result.stdout
-        except:
-            return False
-
-    def print_features(self):
-        print(f"\n{self.colors['bold']}{self.colors['cyan']}📌 AVAILABLE FEATURES:{self.colors['end']}")
-        for i, feature in enumerate(self.features, 1):
-            print(f"   {self.colors['yellow']}{i:2d}.{self.colors['end']} {feature}")
-
-    def run_sqlmap_command(self, command):
-        """Execute sqlmap command with colorful output"""
-        print(f"\n{self.colors['green']}[+] Executing: sqlmap {command}{self.colors['end']}")
-        try:
-            process = subprocess.Popen(f"sqlmap {command}", shell=True, 
-                                     stdout=subprocess.PIPE, stderr=subprocess.STDOUT, 
-                                     text=True)
-            
-            for line in process.stdout:
-                if "target" in line.lower() and "url" in line.lower():
-                    print(f"{self.colors['cyan']}{line.strip()}{self.colors['end']}")
-                elif "payload" in line.lower():
-                    print(f"{self.colors['red']}{line.strip()}{self.colors['end']}")
-                elif "vulnerable" in line.lower():
-                    print(f"{self.colors['green']}{line.strip()}{self.colors['end']}")
-                elif "database" in line.lower():
-                    print(f"{self.colors['yellow']}{line.strip()}{self.colors['end']}")
-                elif "table" in line.lower():
-                    print(f"{self.colors['purple']}{line.strip()}{self.colors['end']}")
-                elif "column" in line.lower():
-                    print(f"{self.colors['blue']}{line.strip()}{self.colors['end']}")
-                else:
-                    print(line.strip())
-            
-            process.wait()
-            return process.returncode
-        except Exception as e:
-            print(f"{self.colors['red']}[!] Error: {e}{self.colors['end']}")
-            return 1
-
-    def basic_scan(self, url, risk=1, level=1, threads=1, use_tor=False):
-        """Perform basic SQL injection scan"""
-        tor_option = " --tor --check-tor" if use_tor else ""
-        command = f'-u "{url}" --risk={risk} --level={level} --threads={threads}{tor_option} --batch'
-        return self.run_sqlmap_command(command)
-
-    def get_databases(self, url, use_tor=False):
-        """Get available databases"""
-        tor_option = " --tor --check-tor" if use_tor else ""
-        command = f'-u "{url}" --dbs{tor_option} --batch'
-        return self.run_sqlmap_command(command)
-
-    def get_tables(self, url, database, use_tor=False):
-        """Get tables from specific database"""
-        tor_option = " --tor --check-tor" if use_tor else ""
-        command = f'-u "{url}" -D {database} --tables{tor_option} --batch'
-        return self.run_sqlmap_command(command)
-
-    def get_columns(self, url, database, table, use_tor=False):
-        """Get columns from specific table"""
-        tor_option = " --tor --check-tor" if use_tor else ""
-        command = f'-u "{url}" -D {database} -T {table} --columns{tor_option} --batch'
-        return self.run_sqlmap_command(command)
-
-    def dump_table(self, url, database, table, output_format='csv', use_tor=False):
-        """Dump table data"""
-        tor_option = " --tor --check-tor" if use_tor else ""
-        command = f'-u "{url}" -D {database} -T {table} --dump{tor_option} --dump-format={output_format} --batch'
-        return self.run_sqlmap_command(command)
-
-    def sql_shell(self, url, use_tor=False):
-        """Open SQL shell"""
-        tor_option = " --tor --check-tor" if use_tor else ""
-        command = f'-u "{url}" --sql-shell{tor_option}'
-        return self.run_sqlmap_command(command)
-
-    def os_shell(self, url, use_tor=False):
-        """Open OS shell"""
-        tor_option = " --tor --check-tor" if use_tor else ""
-        command = f'-u "{url}" --os-shell{tor_option}'
-        return self.run_sqlmap_command(command)
-
-    def get_users(self, url, use_tor=False):
-        """Get database users"""
-        tor_option = " --tor --check-tor" if use_tor else ""
-        command = f'-u "{url}" --users{tor_option} --batch'
-        return self.run_sqlmap_command(command)
-
-    def get_passwords(self, url, use_tor=False):
-        """Get user passwords"""
-        tor_option = " --tor --check-tor" if use_tor else ""
-        command = f'-u "{url}" --passwords{tor_option} --batch'
-        return self.run_sqlmap_command(command)
-
-    def google_dork(self, dork):
-        """Search using Google dorks"""
-        command = f'-g "{dork}" --batch'
-        return self.run_sqlmap_command(command)
-
-    def interactive_mode(self):
-        """Interactive mode for manual control"""
-        print(f"\n{self.colors['bold']}{self.colors['cyan']}🚀 Interactive Mode Activated{self.colors['end']}")
-        
-        url = input(f"{self.colors['yellow']}[?] Enter target URL: {self.colors['end']}")
-        use_tor = input(f"{self.colors['yellow']}[?] Use Tor? (y/n): {self.colors['end']}").lower() == 'y'
-        
-        while True:
-            print(f"\n{self.colors['bold']}{self.colors['cyan']}📋 INTERACTIVE MENU:{self.colors['end']}")
-            print(f"   {self.colors['yellow']}1.{self.colors['end']} Basic Scan")
-            print(f"   {self.colors['yellow']}2.{self.colors['end']} Get Databases")
-            print(f"   {self.colors['yellow']}3.{self.colors['end']} Get Tables")
-            print(f"   {self.colors['yellow']}4.{self.colors['end']} Get Columns")
-            print(f"   {self.colors['yellow']}5.{self.colors['end']} Dump Table")
-            print(f"   {self.colors['yellow']}6.{self.colors['end']} SQL Shell")
-            print(f"   {self.colors['yellow']}7.{self.colors['end']} OS Shell")
-            print(f"   {self.colors['yellow']}8.{self.colors['end']} Get Users")
-            print(f"   {self.colors['yellow']}9.{self.colors['end']} Get Passwords")
-            print(f"   {self.colors['yellow']}0.{self.colors['end']} Exit")
-            
-            choice = input(f"\n{self.colors['yellow']}[?] Select option: {self.colors['end']}")
-            
-            if choice == '1':
-                risk = input(f"{self.colors['yellow']}[?] Risk level (1-3, default 1): {self.colors['end']}") or "1"
-                level = input(f"{self.colors['yellow']}[?] Level (1-5, default 1): {self.colors['end']}") or "1"
-                threads = input(f"{self.colors['yellow']}[?] Threads (1-10, default 1): {self.colors['end']}") or "1"
-                self.basic_scan(url, int(risk), int(level), int(threads), use_tor)
-            
-            elif choice == '2':
-                self.get_databases(url, use_tor)
-            
-            elif choice == '3':
-                database = input(f"{self.colors['yellow']}[?] Database name: {self.colors['end']}")
-                self.get_tables(url, database, use_tor)
-            
-            elif choice == '4':
-                database = input(f"{self.colors['yellow']}[?] Database name: {self.colors['end']}")
-                table = input(f"{self.colors['yellow']}[?] Table name: {self.colors['end']}")
-                self.get_columns(url, database, table, use_tor)
-            
-            elif choice == '5':
-                database = input(f"{self.colors['yellow']}[?] Database name: {self.colors['end']}")
-                table = input(f"{self.colors['yellow']}[?] Table name: {self.colors['end']}")
-                format_choice = input(f"{self.colors['yellow']}[?] Format (csv/html, default csv): {self.colors['end']}") or "csv"
-                self.dump_table(url, database, table, format_choice, use_tor)
-            
-            elif choice == '6':
-                self.sql_shell(url, use_tor)
-            
-            elif choice == '7':
-                self.os_shell(url, use_tor)
-            
-            elif choice == '8':
-                self.get_users(url, use_tor)
-            
-            elif choice == '9':
-                self.get_passwords(url, use_tor)
-            
-            elif choice == '0':
-                print(f"{self.colors['green']}[+] Exiting...{self.colors['end']}")
-                break
-            
-            else:
-                print(f"{self.colors['red']}[!] Invalid option{self.colors['end']}")
-
-def main():
-    tool = ChowdhuryVaiSQLMap()
-    tool.print_banner()
-    tool.print_features()
-    
-    parser = argparse.ArgumentParser(description='ChowdhuryVai SQLMap - Automated SQL Injection Tool')
-    parser.add_argument('url', nargs='?', help='Target URL')
-    parser.add_argument('-r', '--risk', type=int, choices=range(1, 4), default=1, help='Risk level (1-3)')
-    parser.add_argument('-l', '--level', type=int, choices=range(1, 6), default=1, help='Level (1-5)')
-    parser.add_argument('-t', '--threads', type=int, choices=range(1, 11), default=1, help='Number of threads (1-10)')
-    parser.add_argument('-g', '--google-dork', help='Google dork search')
-    parser.add_argument('--tor', action='store_true', help='Use Tor for anonymity')
-    parser.add_argument('--interactive', action='store_true', help='Start interactive mode')
-    parser.add_argument('-v', '--version', action='store_true', help='Show version')
-    
-    args = parser.parse_args()
-    
-    if args.version:
-        print("ChowdhuryVai SQLMap v1.0.0")
-        return
-    
-    # Check if sqlmap is installed
-    if not tool.check_sqlmap():
-        print(f"{tool.colors['red']}[!] sqlmap is not installed or not in PATH{tool.colors['end']}")
-        print(f"{tool.colors['yellow']}[!] Please install sqlmap: pip install sqlmap{tool.colors['end']}")
-        return 1
-    
-    # Check Tor if requested
-    if args.tor and not tool.check_tor():
-        print(f"{tool.colors['red']}[!] Tor is not running or not configured{tool.colors['end']}")
-        print(f"{tool.colors['yellow']}[!] Please start Tor service or install it{tool.colors['end']}")
-        return 1
-    
-    # Interactive mode
-    if args.interactive or not any(vars(args).values()):
-        tool.interactive_mode()
-        return
-    
-    # Google dork search
-    if args.google_dork:
-        tool.google_dork(args.google_dork)
-        return
-    
-    # Basic scan with URL
-    if args.url:
-        print(f"{tool.colors['green']}[+] Starting automated SQL injection scan...{tool.colors['end']}")
-        print(f"{tool.colors['cyan']}[i] Target: {args.url}{tool.colors['end']}")
-        print(f"{tool.colors['cyan']}[i] Risk: {args.risk}, Level: {args.level}, Threads: {args.threads}{tool.colors['end']}")
-        if args.tor:
-            print(f"{tool.colors['cyan']}[i] Using Tor for anonymity{tool.colors['end']}")
-        
-        tool.basic_scan(args.url, args.risk, args.level, args.threads, args.tor)
-    else:
-        parser.print_help()
-
-if __name__ == "__main__":
-    main()
+# Reconstruct and execute
+encrypted_code = "".join([c0, c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30, c31, c32, c33, c34, c35, c36, c37, c38, c39, c40, c41, c42, c43, c44, c45, c46, c47, c48, c49, c50, c51, c52, c53, c54, c55, c56, c57, c58, c59, c60, c61, c62, c63, c64, c65, c66, c67, c68, c69, c70, c71, c72, c73, c74, c75, c76, c77, c78, c79, c80, c81, c82, c83, c84, c85, c86, c87, c88, c89, c90, c91, c92, c93, c94, c95, c96, c97, c98, c99, c100, c101, c102, c103, c104, c105, c106, c107, c108, c109, c110, c111, c112, c113, c114, c115, c116, c117, c118, c119, c120, c121, c122, c123, c124, c125, c126, c127, c128, c129, c130, c131, c132, c133, c134, c135, c136, c137, c138, c139, c140, c141, c142, c143, c144, c145, c146, c147, c148, c149, c150, c151, c152, c153, c154, c155, c156, c157, c158, c159, c160, c161, c162, c163, c164, c165, c166, c167, c168, c169, c170, c171, c172, c173, c174, c175, c176, c177, c178, c179, c180, c181, c182, c183, c184, c185, c186, c187, c188, c189, c190, c191, c192, c193, c194, c195, c196, c197, c198, c199, c200, c201, c202, c203, c204, c205, c206, c207, c208, c209, c210, c211, c212, c213, c214, c215, c216, c217, c218, c219, c220, c221, c222, c223, c224, c225, c226, c227, c228, c229, c230, c231, c232, c233, c234, c235, c236, c237, c238, c239, c240, c241, c242, c243, c244, c245, c246, c247, c248, c249, c250, c251, c252, c253, c254, c255, c256, c257, c258, c259, c260, c261, c262, c263, c264, c265, c266, c267, c268, c269, c270, c271, c272, c273, c274, c275, c276, c277, c278, c279, c280, c281, c282, c283, c284, c285, c286, c287, c288, c289, c290, c291, c292, c293, c294, c295, c296, c297, c298, c299, c300, c301, c302, c303, c304, c305, c306, c307, c308, c309, c310, c311, c312, c313, c314, c315, c316, c317, c318, c319, c320, c321, c322, c323, c324, c325, c326, c327, c328, c329, c330, c331, c332, c333, c334])
+exec(__import__('base64').b64decode(encrypted_code).decode())
